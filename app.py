@@ -3,7 +3,6 @@ import pickle
 import sqlite3
 app = Flask(__name__)
 
-
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -11,13 +10,13 @@ def home():
 @app.route('/prediction',methods = ['GET','POST'])
 def prediction():
     if request.method == 'POST':
-        nitro = request.form.get('nitrogen')
-        phos = request.form.get('phosphorus')
-        potash = request.form.get('potassium')
-        tem = request.form.get('temperature')
-        humi = request.form.get('humidity')
-        ph = request.form.get('ph')
-        rainfall = request.form.get('rainfall')
+        nitro = request.form.get('Nitrogen')
+        phos = request.form.get('Phosphorus')
+        potash = request.form.get('Potassium')
+        tem = request.form.get('Temperature')
+        humi = request.form.get('Humidity')
+        ph = request.form.get('Ph')
+        rainfall = request.form.get('Rainfall')
         print(nitro,phos,potash,tem,humi,ph,rainfall)
         with open('model.pkl','rb') as model_file:
             mlmodel = pickle.load(model_file)
@@ -31,7 +30,7 @@ def prediction():
     else:
         return render_template('prediction.html')
 
-@app.route('/showdata',methods=['GET','POST'])
+@app.route('/showdata',methods = ['GET','POST'])
 def showdata():
     conn =sqlite3.connect('cropdata.db')
     cur = conn.cursor()
@@ -41,9 +40,9 @@ def showdata():
     for i in x:
         p = {}
         p['Nitrogen']= i[0]
-        p['Phosporus']= i[1]
+        p['Phosphorus']= i[1]
         p['Potassium']= i[2]
-        p['Temparature']= i[3]
+        p['Temperature']= i[3]
         p['Humidity']= i[4]
         p['Ph']= i[5]
         p['Rainfall']= i[6]
