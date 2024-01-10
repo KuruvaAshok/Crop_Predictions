@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #555;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #444;
+            transition: background-color 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        table {
+            animation: fadeIn 1s;
+        }
+    </style>
+    <title>Crop Data Table</title>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nitrogen</th>
+                <th>Phosphorus</th>
+                <th>Potassium</th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+                <th>Ph</th>
+                <th>Rainfall</th>
+                <th>Prediction</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{nitro}</td>
+                <td>{phos}</td>
+                <td>{kp}</td>
+                <td>{temp}</td>
+                <td>{hum}</td>
+                <td>{ph}</td>
+                <td>{rain}</td>
+                <td>{res}</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+</body>
+</html>
