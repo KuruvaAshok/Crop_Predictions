@@ -25,20 +25,20 @@ def prediction():
         print(res)
         conn = sqlite3.connect('cropdata.db')
         cur = conn.cursor()
-        cur.execute(f"""insert into crop values ({nitro},{phos},{potash},{tem},{humi},{ph},{rainfall},'{res[0]}')""")
+        cur.execute(f'''Insert into crop values ({nitro},{phos},{potash},{tem},{humi},{ph},{rainfall},'{res[0]}')''')
         conn.commit()
         return render_template("result.html",res=res[0])        
     else:
         return render_template('prediction.html')
 
-@app.route('/show-data',methods=['GET','POST'])
+@app.route('/showdata',methods=['GET','POST'])
 def showdata():
-  conn =sqlite3.connect('cropdata.db')
-  cur = conn.cursor()
-  cur.execute("select * from crop")
-  x= cur.fetchall()
-  li = []
-  for i in x:   
+    conn =sqlite3.connect('cropdata.db')
+    cur = conn.cursor()
+    cur.execute("select * from crop")
+    x = cur.fetchall()
+    li = []
+    for i in x:
         p = {}
         p['Nitrogen']= i[0]
         p['Phosporus']= i[1]
@@ -49,11 +49,11 @@ def showdata():
         p['Rainfall']= i[6]
         p['Result']= i[7]
         li.append(p)       
-
-  return render_template('showdata.html')
+    return render_template('showdata.html',data = li)
 
 if __name__=='__main__':
     app.run(host = '0.0.0.0',port = 3386)
+    # app.run(debug=False)
     
    
 
