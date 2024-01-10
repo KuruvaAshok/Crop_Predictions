@@ -1,6 +1,8 @@
 from flask import Flask, render_template,jsonify,request 
 import pickle
+import sqlite3
 app = Flask(__name__)
+
 
 @app.route('/')
 def home():
@@ -21,6 +23,9 @@ def prediction():
             mlmodel = pickle.load(model_file)
         res = mlmodel.predict([[float(nitro),float(phos),float(potash),float(tem),float(humi),float(ph),float(rainfall)]])
         print(res)
+        conn = sqlite3.connect('cropdata.db')
+        cur = conn.cursor()
+        cur.execute(f'''insert into crop values ({nitro},{phos},{potash},{tem},{humi},{ph},{rainfall},'{res[0]}')''')
         return render_template("result.html",res=res[0])        
     else:
         return render_template('prediction.html')
