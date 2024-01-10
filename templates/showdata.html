@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            background-color: #333;
+            background-color: #000;
             color: #fff;
             font-family: Arial, sans-serif;
         }
@@ -63,17 +63,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>{nitro}</td>
-                <td>{phos}</td>
-                <td>{kp}</td>
-                <td>{temp}</td>
-                <td>{hum}</td>
-                <td>{ph}</td>
-                <td>{rain}</td>
-                <td>{res}</td>
-            </tr>
-            <!-- Add more rows as needed -->
+            {% for item in data %}
+                <tr>
+                    <td>{{ item['Nitrogen'] }}</td>
+                    <td>{{ item['Phosphorus'] }}</td>
+                    <td>{{ item['Potassium'] }}</td>
+                    <td>{{ item['Temperature'] }}</td>
+                    <td>{{ item['Humidity'] }}</td>
+                    <td>{{ item['Ph'] }}</td>
+                    <td>{{ item['Rainfall'] }}</td>
+                    <td>{{ item['Result'] }}</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

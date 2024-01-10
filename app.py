@@ -36,7 +36,19 @@ def showdata():
   conn =sqlite3.connect('cropdata.db')
   cur = conn.cursor()
   cur.execute("select * from crop")
-  print(cur.fetchall())
+  x= cur.fetchall()
+  li = []
+  for i in x:   
+        p = {}
+        p['Nitrogen']= i[0]
+        p['Phosporus']= i[1]
+        p['Potassium']= i[2]
+        p['Temparature']= i[3]
+        p['Humidity']= i[4]
+        p['Ph']= i[5]
+        p['Rainfall']= i[6]
+        p['Result']= i[7]
+        li.append(p)       
 
   return render_template('showdata.html')
 
